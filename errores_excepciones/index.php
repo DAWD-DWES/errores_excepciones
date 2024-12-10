@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Programación con librería PDO</title>
+        <title>Programación con errores y excepciones</title>
         <meta name="viewport" content="width=device-width">
         <meta charset="UTF-8">
         <link rel="stylesheet" href="stylesheet.css">
     </head>
     <body>
-        <h2>Programación con librería PDO</h2>
+        <h2>Programación con errores y excepciones</h2>
         <table>
             <tr><td colspan="2"><p>Muestra el valor de las variables de entorno, error_reporting, display_errors y log_errors</p></td></tr>
             <tr>
@@ -21,7 +21,7 @@
             <tr>
                 <td>$num1 = $num2;</td>
                 <td><?php
-                    ini_set('display_errors', 0);
+                   // ini_set('display_errors', 0);
                     $num1 = $num2;
                     ini_set('display_errors', 1);
                     ?></td>
@@ -31,13 +31,13 @@
                 <td>$array = [1, 2, 3];
                     echo "El array es: $array";</td>
                 <td><?php
-                    error_reporting(E_ALL & ~E_WARNING);
+                  //  error_reporting(E_ALL & ~E_WARNING);
                     $array = [1, 2, 3];
                     echo "El array es: $array";
                     error_reporting(E_ALL);
                     ?></td>
             </tr>
-            <tr><td colspan = "2"><p>Cambia el valor de error_reporting para que solo se reporten errores de advertencia E_WARNING</p></td></tr>
+            <tr><td colspan = "2"><p></p></td></tr>
             <tr>
                 <td>echo $variableNoDefinida;
                     echo CONSTANTE_NO_DEFINIDA;
