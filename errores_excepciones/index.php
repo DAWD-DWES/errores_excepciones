@@ -24,7 +24,7 @@
                     echo "El array es: $array";</td>
                <td><!-- Escribe tu código aquí --></td>
             </tr>
-            <tr><td colspan = "2"><p>Cambia el valor de error_reporting para que solo se reporten errores de advertencia E_WARNING</p></td></tr>
+            <tr><td colspan = "2"><p>Genera otros tipos de errores incluido algún error fatal para ver la diferencia en el proceso de ejecución del script</p></td></tr>
             <tr>
                 <td>echo $variableNoDefinida;
                     echo CONSTANTE_NO_DEFINIDA;
