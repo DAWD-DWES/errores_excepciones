@@ -3,8 +3,8 @@
 // Entorno de producción
 /* ini_set('display_errors', 0);
   ini_set('log_errors', 1);
-  error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
- */
+  error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED); */
+
 // Entorno de desarrollo
 ini_set('display_errors', 1);
 ini_set('log_errors', 1);
@@ -21,6 +21,8 @@ error_reporting(E_ALL);
     <body>
         <h2>Programación con errores y excepciones</h2>
         <table>
+            <!--
+            -->
             <tr><td colspan="2"><p>Muestra el valor de las variables de entorno, error_reporting, display_errors y log_errors</p></td></tr>
             <tr>
                 <td></td>
@@ -29,8 +31,6 @@ error_reporting(E_ALL);
                     <?= var_dump(ini_get('log_errors')) ?>
                 </td>
             </tr>
-            <!--
-            -->
             <tr><td colspan="2"><p>Cambia el valor de display_errors para comprobar que los errores ya no se visualizan en pantalla</p></td></tr>
             <td>$num1 = $num2;</td>
             <td><?php
@@ -39,36 +39,35 @@ error_reporting(E_ALL);
                 ini_set('display_errors', 1);
                 ?></td>
         </tr>
-        <!-- 
         <tr><td colspan="2"><p>Cambia el valor de error_reporting para que no se reporten errores de advertencia E_WARNING</p></td></tr>
         <tr>
             <td>$array = [1, 2, 3];
                 echo "El array es: $array";</td>
-            <td>?php
+            <td><?php
                 error_reporting(E_ALL & ~E_WARNING);
                 $array = [1, 2, 3];
                 echo "El array es: $array";
                 error_reporting(E_ALL);
                 ?></td>
         </tr>
-        <tr><td colspan = "2"><p>Genera otros tipos de errores incluido algún error fatal para ver la diferencia en el proceso de ejecución del script</p></td></tr>
-        <tr>
-            <td>echo $variableNoDefinida;
-                echo CONSTANTE_NO_DEFINIDA;
-            </td>
-            <td>?php
-                echo $variableNoDefinida;
-                echo "La ejecución sigue";
-                echo CONSTANTE_NO_DEFINIDA;
-                echo "La ejecución no sigue";
-                ?></td>
-        </tr>
+            <tr><td colspan = "2"><p>Genera otros tipos de errores incluido algún error fatal para ver la diferencia en el proceso de ejecución del script</p></td></tr>
+            <tr>
+                <td>echo $variableNoDefinida;
+                    echo CONSTANTE_NO_DEFINIDA;
+                </td>
+                <td><?php
+                    echo $variableNoDefinida;
+                    echo "La ejecución sigue";
+                    echo CONSTANTE_NO_DEFINIDA;
+                    echo "La ejecución no sigue";
+                    ?></td>
+            </tr>
         <tr><td colspan = "2"><p>Captura el error de tipo DivisionByZeroError generado por un error fatal, por ejemplo la división por 0</p></td></tr>
         <tr>
             <td>
                 $calculo = 5/0;
             </td>
-            <td>?php
+            <td><?php
                 //Probar a no capturar la excepción
                 try {
                     $calculo = 5 / 0;
@@ -83,11 +82,12 @@ error_reporting(E_ALL);
             <td>$array = ['a', 'b', 'c'];
                 $result = array_rand($array, 5);
             </td>
-            <td>?php
+            <td><?php
                 try {
                     $array = ['a', 'b', 'c'];
                     $result = array_rand($array, 5);
                 } catch (ValueError $ex) {
+                    echo "Mas informacion";
                     echo $ex->getMessage(); // Mensaje volcado en la página de salida
                 }
                 ?></td>
@@ -96,7 +96,7 @@ error_reporting(E_ALL);
         <tr>
             <td>$array = array_column([1,2,3]);
             </td>
-            <td>?php
+            <td><?php
         try {
             $array = array_column([1, 2, 3]);
         } catch (Error $ex) {
@@ -113,7 +113,7 @@ error_reporting(E_ALL);
         <tr>
             <td>
             </td>
-            <td>?php
+            <td><?php
         function dividir($numerador, $denominador) {
             if (!is_numeric($numerador) || !is_numeric($denominador)) {
                 throw new InvalidArgumentException("Los argumentos deben ser números.");
@@ -132,7 +132,7 @@ error_reporting(E_ALL);
         }
 
         try {
-            echo dividir(10, 0); // Denominador inválido
+            echo dividir(10, 2); // Denominador inválido
             $lista = [1, 2, 3];
             echo obtenerElemento($lista, 5); // Índice fuera de los límites
         } catch (InvalidArgumentException $e) {
@@ -146,7 +146,7 @@ error_reporting(E_ALL);
         <tr><td colspan = "2"><p>Crear alguna excepción de usuario y lanzarla en el programa</p></td></tr>
         <tr>
             <td></td>
-            <td>?php
+            <td><?php
 
 // Definición de una excepción personalizada
         class MiExcepcionPersonalizada extends Exception {
@@ -188,7 +188,9 @@ error_reporting(E_ALL);
         }
         ?>
             </td>
-        </tr> -->
-    </table>
-</body>
+        </tr> 
+            <!-- 
+            -->
+        </table>
+    </body>
 </html>
